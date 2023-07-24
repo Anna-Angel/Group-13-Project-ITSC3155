@@ -1,0 +1,12 @@
+@startuml authentication_classes_updated
+skinparam class {
+  BackgroundColor White
+  ArrowColor Black
+  BorderColor Black
+}
+
+class Authenticator {
+  + authenticate(username: str, password: str): bool
+}
+
+@enduml

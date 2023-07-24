@@ -1,0 +1,17 @@
+@startuml core_classes_updated
+skinparam class {
+  BackgroundColor White
+  ArrowColor Black
+  BorderColor Black
+}
+
+class User {
+  - user_id: int
+  - name: string
+  - email: string
+  + get_id(): int
+  + get_name(): string
+  + get_email(): string
+}
+
+@enduml
