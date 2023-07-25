@@ -1,0 +1,9 @@
+@startuml user_registration
+actor User
+participant "System" as system
+control "Authentication" as auth
+User -> system: User Registration
+activate system
+system -> auth: login_pipeline(username, password)
+system --> User: Account Created
+@enduml

@@ -1,0 +1,6 @@
+@startuml user_post
+actor User
+participant "System" as system
+User -> system: User Post
+system --> User: Post Successful
+@enduml
