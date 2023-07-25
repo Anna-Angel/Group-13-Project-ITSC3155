@@ -1,0 +1,20 @@
+@startuml User
+left to right direction
+actor User
+rectangle "System" as system {
+  (Login)
+  (Register)
+  (Delete Message)
+  (Post Message)
+  (Password Management)
+  (View Profile)
+  (Logout)
+}
+User --> (Login)
+User --> (Register)
+User --> (Delete Message)
+User --> (Post Message)
+User --> (Password Management)
+User --> (View Profile)
+User --> (Logout)
+@enduml
