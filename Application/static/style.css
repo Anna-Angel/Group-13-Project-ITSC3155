@@ -1,0 +1,89 @@
+/* Reset default margin and padding for all elements */
+body, h1, h2, h3, p, ul, li, form, input {
+  margin: 10;
+  padding: 0;
+}
+
+/* Set a background color for the body */
+body {
+  background-color: #f0f0f0;
+  font-family: Arial, sans-serif;
+}
+
+/* Style the header */
+header {
+  background-color: #0a0a0a;
+  color: #fff;
+  padding: 10px;
+}
+
+/* Style the navigation menu */
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Style the main content */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Style the form elements */
+form {
+  margin-top: 20px;
+}
+
+form label {
+  display: block;
+  margin-bottom: 14px;
+}
+
+form input[type="text"],
+form input[type="password"],
+form textarea {
+  width: 10%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 10px solid #8a7979;
+  border-radius: 15px;
+}
+
+form input[type="submit"] {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Style the message list */
+ul.messages {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+ul.messages li {
+  background-color: #fff;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+
