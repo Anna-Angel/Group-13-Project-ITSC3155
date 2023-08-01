@@ -1,12 +1,16 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, session
 
 app = Flask(__name__)
+app.secret_key = "my_secret_key"  # Set a secret key for session management
 
 # User Data to Login
 USERS = [
     {"username": "Ishan", "password": "Ishan101"},
     {"username": "Sharma", "password": "Sharma101"}
 ]
+
+# Global Discussion Board (temporary storage for messages)
+DISCUSSION_BOARD = []
 
 @app.route('/')
 def dashboard():
@@ -21,7 +25,8 @@ def login():
         # Check DB for existing username and matching password
         for user in USERS:
             if user['username'] == username and user['password'] == password:
-                # If login is successful, redirect to the welcome page
+                # If login is successful, store the username in the session
+                session['username'] = username
                 return redirect('/welcome')
 
         # If login fails, reload the dashboard page
@@ -50,9 +55,23 @@ def signup():
     # If the request method is GET, render the signup form
     return render_template('signup.html')
 
-@app.route('/welcome')
+@app.route('/welcome', methods=['GET', 'POST'])
 def welcome():
-    return "Welcome! You have successfully logged in."
+    if 'username' not in session:
+        return redirect('/login')
+
+    if request.method == 'POST':
+        # Get the message from the form
+        message = request.form['message']
+        # Get the username from the session
+        username = session['username']
+
+        # Create a new message with username and message content
+        new_message = {"username": username, "message": message}
+        # Add the new message to the global discussion board
+        DISCUSSION_BOARD.append(new_message)
+
+    return render_template('welcome.html', messages=DISCUSSION_BOARD, username=session['username'])
 
 if __name__ == '__main__':
     app.run(debug=True)

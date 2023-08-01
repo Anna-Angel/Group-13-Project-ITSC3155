@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome</title>
+</head>
+<body>
+    <h1>Welcome To The Global Discussion Board!</h1>
+
+    <h2>Post Your Message Below!</h2>
+    <form method="post" action="/welcome">
+        <input type="hidden" name="username" value="{{ request.form.username }}">
+        <textarea name="message" rows="4" cols="50" required></textarea><br>
+        <input type="submit" value="Post">
+    </form>
+
+    <hr>
+    <h3>DISCUSSION BOARD:</h3>
+    <ul>
+        {% for message in messages %}
+        <li>{{ message.username }} posted: {{ message.message }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
