@@ -58,7 +58,7 @@ def signup():
 @app.route('/welcome', methods=['GET', 'POST'])
 def welcome():
     if 'username' not in session:
-        return redirect('/login')
+        return redirect('/login') 
 
     if request.method == 'POST':
         # Get the message from the form

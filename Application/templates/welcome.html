@@ -10,8 +10,8 @@
     <h2>Post Your Message Below!</h2>
     <form method="post" action="/welcome">
         <input type="hidden" name="username" value="{{ request.form.username }}">
-        <textarea name="message" rows="4" cols="50" required></textarea><br>
-        <input type="submit" value="Post">
+        <textarea name="message" rows="4" cols="50" data-testid="post-msg-box" required></textarea><br>
+        <input type="submit" value="Post" data-testid="post-btn">
     </form>
 
     <hr>
