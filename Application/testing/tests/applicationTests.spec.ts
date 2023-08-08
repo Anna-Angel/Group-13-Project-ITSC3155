@@ -59,12 +59,18 @@ test('login with admin cred', async ({ page }) => {
 
   pass: If the user is on the welcome page.
    */
+
+  //Go to Login Page
   await page.goto(dashboard_page);
   page.click(login_btn)
   await expect(page).toHaveURL(login_page);
+
+  //Fills out username and password
   page.fill(username, admin_user)
   await page.waitForTimeout(1000);
   page.fill(password, admin_pass)
+
+  //Login to Welcome Page
   page.click(login_btn)
   await expect(page).toHaveURL(welcome_page);
 
@@ -77,16 +83,24 @@ test('create an account', async ({ page }) => {
 
   pass: If the user can create and sign in using same credentials.
    */
+  
+  //Go to Signup Page
   await page.goto(dashboard_page);
   page.click(signup_btn)
   await expect(page).toHaveURL(signup_page);
+
+  //Fill out username and password to signup
   page.fill(username, test_user)
   await page.waitForTimeout(1000);
   page.fill(password, test_pass)
   page.click(signup_btn)
+
+  //Go to Login Page
   await expect(page).toHaveURL(dashboard_page);
   page.click(login_btn)
   await expect(page).toHaveURL(login_page);
+
+  //Login with the newly created credentials
   page.fill(username, test_user)
   await page.waitForTimeout(1000);
   page.fill(password, test_pass)
@@ -101,15 +115,23 @@ test('post a message', async ({ page }) => {
 
   pass: If message is successfully posted.
    */
+
+  //Go to login page
   await page.goto(dashboard_page);
   page.click(login_btn)
   await expect(page).toHaveURL(login_page);
+
+  //Sign in with Admin Credentials
   page.fill(username, admin_user)
   await page.waitForTimeout(1000);
   page.fill(password, admin_pass)
   page.click(login_btn)
+
+  //Type a message in the message box
   await expect(page).toHaveURL(welcome_page);
   page.fill(post_msg_box, "Testing on video - Ishd Sharma")
+
+  //Post the message
   page.click(post_btn)
   await page.waitForTimeout(1000);
 });
