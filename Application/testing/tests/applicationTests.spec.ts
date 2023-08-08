@@ -19,8 +19,8 @@ const post_msg_box = "[data-testid='post-msg-box']"
 //Login Credentials 
 const admin_user = "Ishan"
 const admin_pass = "Ishan101"
-const test_user = "TestUser6"
-const test_pass = "TestPass6"
+const test_user = "TestUser8"
+const test_pass = "TestPass8"
 
 
 
