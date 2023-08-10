@@ -73,5 +73,31 @@ def welcome():
 
     return render_template('welcome.html', messages=DISCUSSION_BOARD, username=session['username'])
 
+@app.route('/profile', methods=['GET', 'POST'])
+def profile():
+    if 'username' not in session:
+        return redirect('/login')
+
+    return render_template('profile.html', username=session['username'])
+
+@app.route('/change', methods=['GET', 'POST'])
+def change():
+    if 'username' not in session:
+        return redirect('/login')
+
+    if request.method == 'POST':
+        # Get username and ask user for new password
+        username = session['username']
+        password = request.form.get('password')
+
+        #update password in dictionary
+        x = 0
+        while x in range(len(USERS)):
+            if USERS[x]['username'] == username:
+                USERS[x]['password'] = password
+                break
+
+    return render_template('change.html', username=session['username'])
+
 if __name__ == '__main__':
     app.run(debug=True)
