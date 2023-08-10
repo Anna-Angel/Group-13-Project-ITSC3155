@@ -107,3 +107,45 @@ def test_apple_stock(db: Database = None) -> tuple:
         return False, error
     else:
         return True, "Correct stock."
+    
+def test_banana_stock(db: Database = None) -> tuple:
+    """
+    Tests that the banana stock loads correctly when database is created.
+
+    args:
+        - db: an sqlite3 database object (optional)
+
+    returns:
+        - error_report: a tuple containing a boolean and a string,
+    """
+
+    db = Database("database/store_records.db") if db is None else db
+    actual_stock = db.get_item_stock_by_id(2)["stock"]
+    expected_stock = 100
+
+    if actual_stock != expected_stock:
+        error = f"Error in test_banana_stock: Incorrect stock."
+        return False, error
+    else:
+        return True, "Correct stock."
+    
+def test_mango_stock(db: Database = None) -> tuple:
+    """
+    Tests that the mango stock loads correctly when database is created.
+
+    args:
+        - db: an sqlite3 database object (optional)
+
+    returns:
+        - error_report: a tuple containing a boolean and a string,
+    """
+
+    db = Database("database/store_records.db") if db is None else db
+    actual_stock = db.get_item_stock_by_id(3)["stock"]
+    expected_stock = 100
+
+    if actual_stock != expected_stock:
+        error = f"Error in test_mango_stock: Incorrect stock."
+        return False, error
+    else:
+        return True, "Correct stock."
