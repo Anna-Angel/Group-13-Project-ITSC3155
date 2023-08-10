@@ -86,3 +86,24 @@ def test_check_connection_threaded(db: Database = None) -> tuple:
         return False, error
     else:
         return True, "Connection is not single threaded."
+    
+def test_apple_stock(db: Database = None) -> tuple:
+    """
+    Tests that the apple stock loads correctly when database is created.
+
+    args:
+        - db: an sqlite3 database object (optional)
+
+    returns:
+        - error_report: a tuple containing a boolean and a string,
+    """
+
+    db = Database("database/store_records.db") if db is None else db
+    actual_stock = db.get_item_stock_by_id(1)["stock"]
+    expected_stock = 100
+
+    if actual_stock != expected_stock:
+        error = f"Error in test_apple_stock: Incorrect stock."
+        return False, error
+    else:
+        return True, "Correct stock."
