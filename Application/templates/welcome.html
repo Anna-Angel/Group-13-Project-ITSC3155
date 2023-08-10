@@ -7,6 +7,10 @@
 <body>
     <h1>Welcome To The Global Discussion Board!</h1>
 
+    <form method="post">
+        <input type="button" onclick="location.href='profile';" value="Profile">
+    </form>
+
     <h2>Post Your Message Below!</h2>
     <form method="post" action="/welcome">
         <input type="hidden" name="username" value="{{ request.form.username }}">
